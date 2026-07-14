@@ -1,6 +1,6 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local lazyrepo = "https://github.com"
   local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
@@ -23,7 +23,7 @@ require("lazy").setup({
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
-    -- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.
+    -- If you know what you're doing, you can set this to `true` to lazy-load all your custom plugins.
     lazy = false,
     -- It's recommended to leave version=false for now, since a lot the plugin that support versioning,
     -- have outdated releases, which may break your Neovim install.
@@ -32,12 +32,12 @@ require("lazy").setup({
   },
   install = { colorscheme = { "tokyonight", "habamax" } },
   checker = {
-    enabled = true, -- check for plugin updates periodically
-    notify = false, -- notify on update
-  }, -- automatically check for plugin updates
+    enabled = true, -- automatically check for plugin updates
+    notify = false, -- get a notification when new updates are found
+  },
   performance = {
     rtp = {
-      -- disable some rtp plugins
+      -- disable some rplugin packages
       disabled_plugins = {
         "gzip",
         -- "matchit",
@@ -51,3 +51,5 @@ require("lazy").setup({
     },
   },
 })
+
+
